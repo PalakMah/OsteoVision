@@ -116,8 +116,8 @@ The notebook is organized as a linear, stage-based pipeline. Each stage is a sep
 │      contributions                                                    │
 └───────────────────────────────┬───────────────────────────────────────┘
                                  ▼
-┌─────────────────────────────────────────────────────────────────────┐
-│ 8. EXPLAINABILITY — BRANCH B (global surrogate)                      │
+┌────────────────────────────────────────────────────────────────────  ─┐
+│ 8. EXPLAINABILITY — BRANCH B (global surrogate)                       │
 │    - Extract fused 256-d embeddings for the whole dataset             │
 │    - Fit a depth-4 Decision Tree to MIMIC the deep model's own        │
 │      predictions (fidelity, not accuracy, is the target)              │
@@ -126,7 +126,7 @@ The notebook is organized as a linear, stage-based pipeline. Each stage is a sep
 │      when each column is shuffled) as a model-agnostic global ranking │
 └───────────────────────────────┬───────────────────────────────────────┘
                                  ▼
-┌─────────────────────────────────────────────────────────────────────┐
+┌────────────────────────────────────────────────────────────────────  ─┐
 │ 9. EXPLANATION BUNDLING & AUDIENCE-AWARE RENDERING                    │
 │    - Combines Grad-CAM region + occlusion region + top LIME features  │
 │      + surrogate-tree agreement into one "explanation bundle" per     │
@@ -137,8 +137,8 @@ The notebook is organized as a linear, stage-based pipeline. Each stage is a sep
 │      High/Medium/Low confidence, no raw numbers                       │
 └───────────────────────────────┬───────────────────────────────────────┘
                                  ▼
-┌─────────────────────────────────────────────────────────────────────┐
-│ 10. LLM-NARRATED EXPLANATIONS                                        │
+┌────────────────────────────────────────────────────────────────────  ─┐
+│ 10. LLM-NARRATED EXPLANATIONS                                         │
 │    - Structured bundle → prompt → Claude (claude-sonnet-4-6) rewrites │
 │      it into fluent prose, separately for:                            │
 │        • Expert prompt: preserves numbers, states surrogate           │
@@ -150,7 +150,7 @@ The notebook is organized as a linear, stage-based pipeline. Each stage is a sep
 │      on Kaggle's no-internet sessions)                                │
 │    - All outputs logged to explanation_review_log.csv with empty      │
 │      rating columns for a downstream human inter-rater review step    │
-└─────────────────────────────────────────────────────────────────────┘
+└────────────────────────────────────────────────────────────────────  ─┘
 ```
 
 ### Key design decisions worth noting
