@@ -2,7 +2,7 @@
 
 A research pipeline that classifies knee X-rays into **normal / osteopenia / osteoporosis**, fuses the image with structured clinical risk factors, and — unusually for a "just train a CNN" notebook — ships a full explainability (XAI) layer that turns every prediction into both an *expert-facing* and a *patient-facing* explanation.
 
-> ⚠️ **Not a diagnostic tool.** This is a research/educational pipeline trained on a small (n=239 images / 243 patient records) public dataset. It is explicitly designed as clinical **decision support**, not a replacement for DEXA scans or a radiologist's judgment. See [Limitations](#limitations--known-weaknesses).
+> **Not a diagnostic tool.** This is a research/educational pipeline trained on a small (n=239 images / 243 patient records) public dataset. It is explicitly designed as clinical **decision support**, not a replacement for DEXA scans or a radiologist's judgment. See [Limitations](#limitations--known-weaknesses).
 
 ---
 
@@ -43,20 +43,20 @@ The notebook is organized as a linear, stage-based pipeline. Each stage is a sep
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│ 0. SETUP                                                             │
-│    Installs deps, sets seeds, device, global CONFIG dict              │
-└───────────────────────────────┬───────────────────────────────────────┘
+│ 0. SETUP                                                            │
+│    Installs deps, sets seeds, device, global CONFIG dict            │
+└───────────────────────────────┬─────────────────────────────────────┘
                                  ▼
 ┌─────────────────────────────────────────────────────────────────────┐
-│ 1. EXPLORATORY DATA ANALYSIS                                         │
-│    - Folder/image census + class imbalance plot                      │
-│    - Clinical sheet load, dtype/missingness audit                    │
-│    - Auto-detection of id / T-score / diagnosis columns               │
-│    - Per-class distributions of numeric risk factors                  │
-└───────────────────────────────┬───────────────────────────────────────┘
+│ 1. EXPLORATORY DATA ANALYSIS                                        │
+│    - Folder/image census + class imbalance plot                     │
+│    - Clinical sheet load, dtype/missingness audit                   │
+│    - Auto-detection of id / T-score / diagnosis columns             │
+│    - Per-class distributions of numeric risk factors                │
+└───────────────────────────────┬─────────────────────────────────────┘
                                  ▼
-┌─────────────────────────────────────────────────────────────────────┐
-│ 2. DATA FUSION & PREPROCESSING                                       │
+┌────────────────────────────────────────────────────────────────────  ─┐
+│ 2. DATA FUSION & PREPROCESSING                                        │
 │    - Regex-based image ↔ patient-ID matching                          │
 │    - Folder-label vs. sheet-diagnosis agreement check                 │
 │    - Numeric: median-impute → StandardScaler                          │
@@ -66,11 +66,11 @@ The notebook is organized as a linear, stage-based pipeline. Each stage is a sep
 └───────────────────────────────┬───────────────────────────────────────┘
                                  ▼
 ┌─────────────────────────────────────────────────────────────────────┐
-│ 3. DATASET / AUGMENTATION / SAMPLING                                 │
-│    - MultimodalKneeDataset: returns (image, tabular_vector, label)    │
-│    - Train-time augmentation: resize+crop, h-flip, rotation, jitter   │
-│    - WeightedRandomSampler to counter class imbalance                 │
-└───────────────────────────────┬───────────────────────────────────────┘
+│ 3. DATASET / AUGMENTATION / SAMPLING                                │
+│    - MultimodalKneeDataset: returns (image, tabular_vector, label)  │
+│    - Train-time augmentation: resize+crop, h-flip, rotation, jitter │
+│    - WeightedRandomSampler to counter class imbalance               │
+└───────────────────────────────┬─────────────────────────────────────┘
                                  ▼
 ┌─────────────────────────────────────────────────────────────────────┐
 │ 4. MODELS & LOSS                                                     │
