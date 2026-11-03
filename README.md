@@ -288,4 +288,4 @@ GPU (`CUDA`) is auto-detected and used if available; the pipeline also runs on C
 1. Provide the dataset at the path in `CONFIG["ROOT"]` (defaults to the Kaggle mount path — update for local use).
 2. Run all cells top to bottom (Setup → EDA → Fusion → Training → Evaluation → XAI Branch A → XAI Branch B → Bundling → LLM Narration).
 3. (Optional) Set the `ANTHROPIC_API_KEY` environment variable to enable live LLM-narrated explanations; otherwise the notebook automatically falls back to deterministic offline templates.
-4. Trained checkpoints, the matched dataset CSV, and the explanation review log will be written to 
+4. Trained checkpoints, the matched dataset CSV, and the explanation review log will be written to `CONFIG["OUT_DIR"]`.
