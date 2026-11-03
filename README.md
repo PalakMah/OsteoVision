@@ -1,4 +1,4 @@
-# Multimodal, Explainable Osteoporosis Screening from Knee X-Rays
+## Multimodal, Explainable Osteoporosis Screening from Knee X-Rays
 
 A research pipeline that classifies knee X-rays into **normal / osteopenia / osteoporosis**, fuses the image with structured clinical risk factors, and — unusually for a "just train a CNN" notebook — ships a full explainability (XAI) layer that turns every prediction into both an *expert-facing* and a *patient-facing* explanation.
 
