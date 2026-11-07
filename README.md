@@ -6,7 +6,7 @@ A research pipeline that classifies knee X-rays into **normal / osteopenia / ost
 
 ---
 
-## Table of Contents
+# Table of Contents
 
 - [Dataset](#dataset)
 - [Pipeline Architecture](#pipeline-architecture)
